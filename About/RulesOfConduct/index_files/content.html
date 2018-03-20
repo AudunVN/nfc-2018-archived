@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>NordicFuzzCon 2018</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rajdhani:500,700">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div id="messageBar" class="message--primary message">Test message here</div>
+        <header class="header">
+            <a class="header__link" href="/">
+                <img class="header__logo" src="logo.svg">
+                <strong class="header__title">NordicFuzzCon</strong>
+            </a>
+        </header>
+        <nav class="nav">
+            <div class="nav__toggle">
+                <button class="nav__toggleButton" type="button" role="button" aria-label="Toggle Navigation">
+                    <span class="nav__toggleLines"></span>
+                </button>
+                <!--<a class="nav__userButton" href="#">Login</a>-->
+            </div>
+            <div class="nav__wrapper">
+                <ul class="nav__masterList">
+                    <li class="nav__group">
+                        <a class="nav__link nav__link--header" href="#">Venue</a>
+                        <ul class="nav__list">
+                            <li class="nav__item"><a class="nav__link" href="./Venue/Hotel.htm">Hotel</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./Venue/SecondHotel.htm">- Second Hotel</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./Venue/OtherAccommodations.htm">* Other Accommodation</a></li>
+                            <li class="nav__item nav__item--active"><span class="nav__link">Travel Information</span></li>
+                            <li class="nav__item"><a class="nav__link" href="./Program/FoodAndDrinks.htm">Food and Drink</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__group">
+                        <a class="nav__link nav__link--header" href="#">Program</a>
+                        <ul class="nav__list">
+                            <li class="nav__item"><a class="nav__link" href="./Program/Events.htm">Events</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./Program/Zootopia.htm">- Zootopia</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./Program/Charity.htm">- Charity</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./Program/CharityConcert.htm">- Charity Concert</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./Program/Goh.htm">- Guest of Honour</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./Program/Artshow.htm">Art Show</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./Program/DealersDen.htm">Dealers' Den</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./Program/Conbook.htm">Conbook Submissions</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./Program/WhatTheFuzz.htm">What the Fuzz?!</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__group">
+                        <a class="nav__link nav__link--header" href="#">Registration</a>
+                        <ul class="nav__list">
+                            <li class="nav__item"><a class="nav__link" href="./Registration/Availability.htm">Availability</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./Registration/Prices.htm">Prices</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./Page/Newsletter.htm">Newsletter</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./Registration/Index.htm">Information</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./Registration/Faq.htm">FAQ</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./About/TermsAndConditions.htm">Terms and Conditions</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./Registration/List.htm">Attendee List</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./Registration/Statistics.htm">Statistics</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__group">
+                        <a class="nav__link nav__link--header" href="#">About</a>
+                        <ul class="nav__list">
+                            <li class="nav__item"><a class="nav__link" href="./About/Nfc.htm">What's All the Fuzz About?</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./Theme/Introduction.htm">Theme</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./About/Policies.htm">Policies</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./About/Staff.htm">Staff and Crew</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./About/BannerExchange.htm">Other Conventions</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./About/Contact.htm">Contact</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./About/Website.htm">Website Credits</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./About/Furries.htm">What Are Furries?</a></li>
+                            <li class="nav__item"><a class="nav__link" href="./About/PreviousYears.htm">Previous Years</a></li>
+                            <li class="nav__item"><a class="nav__link" href="https://galleries.nordicfuzzcon.org">Photo Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__group">
+                        <a class="nav__link nav__link--header" href="https://forum.nordicfuzzcon.org">Forum</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- BEGIN PAGE CONTENT TEMPLATE ACTUAL -->
+        <article class="page">
+            <header class="page__header">
+                <h1 class="page__title">Header</h1>
+            </header>
+            <div class="page__content">
+                <!-- CMS CONTENT GOES IN HERE ONLY -->
+                <h2>H2</h2>
+                <h3>H3</h3>
+                <h4>H4</h4>
+                <h5>H5</h5>
+                <p>Paragraph</p>
+                <p>This is responsive, resize your browser from 320px+ to see how things change.</p>
+                <ul>
+                    <li>Unordered List</li>
+                    <li>Unordered List</li>
+                </ul>
+                <ol>
+                    <li>Ordered List</li>
+                    <li>Ordered List</li>
+                </ol>
+                <p>
+                    <strong>Strong</strong>
+                </p>
+                <p>
+                    <b>B (bold)</b>
+                </p>
+                <p>
+                    <em>EM (Emphasis)</em>
+                </p>
+                <p>
+                    <i>I (Itallic)</i>
+                </p>
+                <p>
+                    <a href="#">Link</a>
+                </p>
+                <h3>Appears In Content But Is Not Part Of Normal Content</h3>
+                <p>
+                    <a title="New Registration" href="#" class="accountAction"><img alt="New Registration" src="../../../static/images/icons/new_registration.png" class="accountAction__icon">New registration</a>
+                    <a title="New Registration" href="#" class="accountAction"><img alt="New Registration" src="../../../static/images/icons/my_booking.png" class="accountAction__icon">My Booking</a>
+                </p>
+                <h3>Images</h3>
+                <p>
+                    <img src="example.jpg">
+                    Unstyled images are block level and cannot be wider than the container. The do not receive special mobile treatment like the other images.
+                </p>
+                <p>
+                    <img class="left" src="example.jpg">
+                    Use &lt;img class="left"&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <p>
+                    <img class="right" src="example.jpg">
+                    Use &lt;img class="right"&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <p>
+                    <a href="example.jpg"><img class="full" src="example.jpg"></a>
+                    Use &lt;img class="full"&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <h3>&lt;table class="pricing"&gt;</h3>
+                <table class="pricing">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th class="standard">Standard</th>
+                            <th class="sponsor">Sponsor</th>
+                            <th class="superSponsor">Super-Sponsor</th>
+                        </tr>
+                        <tr class="smaller">
+                            <th></th>
+                            <th class="standard">900 SEK</th>
+                            <th class="sponsor">+350 SEK</th>
+                            <th class="superSponsor">+1150 SEK</th>
+                        </tr>
+                        <tr class="smaller">
+                            <th></th>
+                            <th class="standard">(90 EUR*)</th>
+                            <th class="sponsor">(35 EUR*)</th>
+                            <th class="superSponsor">(115 EUR*)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="standard">
+                        <tr>
+                            <th>Convention badge + lanyard</th>
+                            <td class="standard">✓</td>
+                            <td class="sponsor">✓</td>
+                            <td class="superSponsor">✓</td>
+                        </tr>
+                        <tr>
+                            <th>Conbook + pocket program</th>
+                            <td class="standard">✓</td>
+                            <td class="sponsor">✓</td>
+                            <td class="superSponsor">✓</td>
+                        </tr>
+                        <tr>
+                            <th>NFC 2017 t-shirt</th>
+                            <td class="standard">+250 SEK (~25 EUR)</td>
+                            <td class="sponsor">✓</td>
+                            <td class="superSponsor">✓</td>
+                        </tr>
+                    </tbody>
+                    <tbody class="sponsor">
+                        <tr>
+                            <th>Special mention on website</th>
+                            <td> </td>
+                            <td class="sponsor">✓</td>
+                            <td class="superSponsor">✓</td>
+                        </tr>
+                        <tr>
+                            <th>Ice cream buffet</th>
+                            <td> </td>
+                            <td class="sponsor">+75 SEK <span style="text-align: -webkit-right;">(~7.5 EUR)</span></td>
+                            <td class="superSponsor">✓</td>
+                        </tr>
+                        <tr>
+                            <th>Sponsor convention badge print</th>
+                            <td> </td>
+                            <td class="sponsor">✓</td>
+                            <td class="superSponsor"> </td>
+                        </tr>
+                        <tr>
+                            <th>Sponsor sticker (for the sticker badge)</th>
+                            <td> </td>
+                            <td class="sponsor">✓</td>
+                            <td class="superSponsor"> </td>
+                        </tr>
+                    </tbody>
+                    <tbody class="superSponsor">
+                        <tr>
+                            <th>Super-Sponsor convention badge print</th>
+                            <td> </td>
+                            <td> </td>
+                            <td class="superSponsor">✓</td>
+                        </tr>
+                        <tr>
+                            <th>Super-sponsor sticker (for the sticker badge)</th>
+                            <td> </td>
+                            <td> </td>
+                            <td class="superSponsor">✓</td>
+                        </tr>
+                        <tr>
+                            <th>Special mention in conbook</th>
+                            <td> </td>
+                            <td> </td>
+                            <td class="superSponsor">✓</td>
+                        </tr>
+                        <tr>
+                            <th>Tiered super-sponsor gift *</th>
+                            <td> </td>
+                            <td> </td>
+                            <td class="superSponsor">✓</td>
+                        </tr>
+                        <tr>
+                            <th>Fast-tracked on-site check-in</th>
+                            <td> </td>
+                            <td> </td>
+                            <td class="superSponsor">✓</td>
+                        </tr>
+                        <tr>
+                            <th>Early access to select events</th>
+                            <td> </td>
+                            <td> </td>
+                            <td class="superSponsor">✓</td>
+                        </tr>
+                        <tr>
+                            <th>Early access to Dealers’ Den</th>
+                            <td> </td>
+                            <td> </td>
+                            <td class="superSponsor">✓</td>
+                        </tr>
+                        <tr>
+                            <th>Early access to the Art Show</th>
+                            <td> </td>
+                            <td> </td>
+                            <td class="superSponsor">✓</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>&lt;table class="table-narrow"&gt; (Limit table width)</h3>
+                <table class="table-narrow">
+                    <thead>
+                        <tr>
+                            <th> </th>
+                            <th>SEK</th>
+                            <th>~EUR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th><a href="/Venue/FuzzBus">FuzzBus</a></th>
+                            <td>80 SEK (one direction)</td>
+                            <td>~8 EUR*</td>
+                        </tr>
+                        <tr>
+                            <th><a href="/Venue/FuzzBus">Bouncy Castle Pass</a></th>
+                            <td>150 SEK</td>
+                            <td>~15 EUR*</td>
+                        </tr>
+                        <tr>
+                            <th><a href="/Program/EatSweden">Eat Sweden</a></th>
+                            <td>95 SEK</td>
+                            <td>~9.5 EUR*</td>
+                        </tr>
+                        <tr>
+                            <th><a href="/Venue/FuzzBus">Stockholm Ghost Walk</a></th>
+                            <td>300 SEK</td>
+                            <td>~30 EUR*</td>
+                        </tr>
+                        <tr>
+                            <th><a href="/Program/DyingDogDinner">Dying Dog Dinner</a></th>
+                            <td>250 SEK</td>
+                            <td>~25 EUR*</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ul class="cards">
+                    <li><a href="/Program/TempleOfTemptation"><img src="examplebroke.jpg">Temple of Temptation Caf&eacute;</a></li>
+                    <li><a href="/Program/HauntedHouse"><img src="example.jpg">Haunted House</a></li>
+                    <li><a href="/Program/CharityConcert"><img src="example.jpg">Charity Concert</a></li>
+                    <li><a href="/Program/Ceremonies"><img src="example.jpg">Opening and closing ceremonies</a></li>
+                </ul>
+                <h3 class="accordion">Accordion Toggle (.accordion class applied)</h3>
+                <p>Accordion content</p>
+                <p>Accordion content</p>
+                <p>Accordion content</p>
+                <h3 class="accordion">Accordion Toggle Two (.accordion class applied)</h3>
+                <p>More accordion content</p>
+                <p>More accordion content</p>
+                <p>More accordion content</p>
+                <h3>Not Accordion</h3>
+                <p>Not accordion content</p>
+                <h3 class="accordion">Another Accordion (.accordion class applied)</h3>
+                <p>And its content</p>
+            </div>
+        </article>
+        <!-- BEGIN FOOTER TEMPLATE -->
+        <footer class="footer">
+            <aside class="hashTag"><a class="hashTag__link" href="https://twitter.com/intent/tweet?button_hashtag=NFC2018">#NFC2018</a></aside>
+            <form id="newsletterForm" class="footer__section newsletter" method="post" action="/Newsletter/AddOrRemoveEmail" enctype="multipart/form-data">
+                <label class="newsletter__label" for="email">Sign up for the newsletter</label>
+                <input class="newsletter__email" id="email" type="email" name="Email" placeholder="email@example.com" required>
+                <input class="newsletter__go" type="submit" value="go">
+            </form>
+            <nav class="footer__section social">
+                <ul class="social__list">
+                    <li class="social__item"><a href="https://www.facebook.com/NordicFuzzCon" class="social__link icon-facebook" title="Facebook Page"><span>Facebook</span></a></li>
+                    <li class="social__item"><a href="https://twitter.com/nordicfuzzcon" class="social__link icon-twitter" title="Twitter Profile"><span>Twitter</span></a></li>
+                    <li class="social__item"><a href="https://www.furaffinity.net/user/nordicfuzzcon" class="social__link icon-furaffinity" title="Fur Affinity Profile"><span>Fur Affinity</span></a></li>
+                    <li class="social__item"><a href="http://nordicfuzzcon.sofurry.com" class="social__link icon-sofurry" title="SoFurry Profile"><span>SoFurry</span></a></li>
+                    <li class="social__item"><a href="https://www.weasyl.com/profile/nordicfuzzcon" class="social__link icon-weasyl" title="Weasyl Profile"><span>Weasyl</span></a></li>
+                    <li class="social__item"><a href="https://www.youtube.com/channel/UCTBZFgM6OMi5cCoug8dkh7A" class="social__link icon-youtube" title="Youtube Channel"><span>Youtube</span></a></li>
+                    <li class="social__item"><a href="https://telegram.me/nordicfuzzcon" class="social__link icon-telegram" title="Telegram Announcements Channel"><span>Telegram Channel</span></a></li>
+                </ul>
+            </nav>
+            <nav class="footer__section portal">
+                <ul class="portal__list">
+                    <li class="portal__item"><a href="//portal.nordicfuzzcon.org" class="portal__link">Portal</a></li>
+                    <li class="portal__item"><a href="//forum.nordicfuzzcon.org" class="portal__link">Forum</a></li>
+                    <li class="portal__item"><a href="//galleries.nordicfuzzcon.org" class="portal__link">Gallery</a></li>
+                    <li class="portal__item"><a href="//2017.nordicfuzzcon.org" class="portal__link">2017</a></li>
+                    <li class="portal__item"><a href="//2016.nordicfuzzcon.org" class="portal__link">2016</a></li>
+                    <li class="portal__item"><a href="//2015.nordicfuzzcon.org" class="portal__link">2015</a></li>
+                    <li class="portal__item"><a href="//2014.nordicfuzzcon.org" class="portal__link">2014</a></li>
+                    <li class="portal__item"><a href="//2013.nordicfuzzcon.org" class="portal__link">2013</a></li>
+                </ul>
+            </nav>
+            <div class="footer__section credits">
+                <ul class="credits__list">
+                    <li class="credits__item"><span class="credits__name"><a class="credits__link" href="https://twitter.com/WuskyPaws">Xor</a></span> Frontend</li>
+                    <li class="credits__item"><span class="credits__name"><a class="credits__link" href="http://spocha.deviantart.com/">Spocha</a></span> Art</li>
+                </ul>
+            </div>
+            <div class="footer__section copy">
+                © NordicFuzzCon 2017
+            </div>
+        </footer>
+        <script src="index.js"></script>
+    </body>
+</html>
