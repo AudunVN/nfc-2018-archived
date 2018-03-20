@@ -5,3 +5,7 @@
 .newsletter {
 	display: none !important;
 }
+
+a[href="/Registration/Availability"] {
+    display: none !important;
+}
