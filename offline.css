@@ -1,3 +1,7 @@
 .cards__image[style="background-image: url(undefined)"] {
 	display: none !important;
 }
+
+.newsletter {
+	display: none !important;
+}
