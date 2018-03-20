@@ -1,0 +1,202 @@
+﻿_error_occured = 'Error occured while loading the statistics!';
+
+_data = {
+    GetCountryData: {
+        title: 'Countries repartition (top 10)',
+        piename: 'Country share',
+        minimum_pct: 4,
+        maxItems : 10,
+        data : []
+    },
+    GetAttendingTypeData: {
+        title: 'Tickets repartition',
+        piename: 'Ticket share',
+        minimum_pct: 0,
+        maxItems: 10,
+        data: []
+    },
+    GetRegistrationStatusData: {
+        title: 'Bookings repartition',
+        piename: 'Booking share',
+        minimum_pct: 0,
+        maxItems: 10,
+        data: []
+    },
+    GetGenderData: {
+        title: 'Gender',
+        piename: 'Gender',
+        minimum_pct: 0,
+        maxItems: 10,
+        data: []
+    },
+    GetSpeciesData: {
+        title: 'Species top',
+        piename: 'Species top',
+        minimum_pct: 0,
+        maxItems: 10,
+        data: []
+    },
+    GetSpeciesCategoryData: {
+        title: 'Species categories top',
+        piename: 'Species categories top',
+        minimum_pct: 0,
+        maxItems: 5,
+        data: []
+    }
+};
+
+$(document).ready(function () {
+    if (!_show_statistics) {
+        $('#hideStatistics').show();
+        $('#displayStatistics').hide();
+        return;
+    }
+    $('#status').show();
+    initData();    
+});
+
+function initData() {
+    $.getJSON(_attendees_statistics_data_url)
+    .done(function (data) {
+        if (data.Status == 1) {
+            $.each(data.Data, function (index, item) {
+                if (typeof item !== "object") return;
+                other = ['Other'];
+                pct_other = 0;
+                $.each(item, function (subindex, subitem) {
+                    if (index == 'GetSpeciesCategoryData' || index == 'GetSpeciesData')
+                        pct = subitem.NumberOfBookings / data.Data.TotalNumberOfBookingsWithSpecies * 100;
+                    else if (index == 'GetGenderData')
+                        pct = subitem.NumberOfBookings / data.Data.TotalNumberOfBookingsWithGenderSpecified * 100;
+                    else
+                        pct = subitem.NumberOfBookings / data.Data.TotalNumberOfBookings * 100;
+                    if (pct >= _data[index].minimum_pct) {
+                        if (_data[index].data.length < _data[index].maxItems) {
+                            _data[index].data.push([subitem.Name, pct]);
+                        }
+                    }
+                    else {
+                        pct_other += pct;
+                    }                    
+                });
+                if (pct_other > 0) {
+                    other.push(pct_other);
+                    _data[index].data.push(other);
+                }
+
+            });
+            //has to be here, or the charts will try to init before _data has been filled
+            initCharts();
+            //countries listing
+            totalNumberOfBookings = 0;
+            $.each(data.Data.GetCountryData, function (index, item) {                
+                addCountry(index + 1, item.CustomData, item.Name, item.NumberOfBookings);
+                totalNumberOfBookings += item.NumberOfBookings;
+            });
+            
+            $.each(data.Data.GetSpeciesData, function (index, item) {
+                addSpecies(index + 1, item.Name, item.NumberOfBookings);
+            });
+
+            $.each(data.Data.GetSpeciesCategoryData, function (index, item) {
+                addSpeciesCategories(index + 1, item.Name, item.NumberOfBookings);
+            });
+
+            //adding total
+            $('#totalNumberOfAttendees').text(totalNumberOfBookings);
+            $('#countries-list').show();
+            $('#species-list').show();
+            $('#species-category-list').show();
+            $('#status').hide();
+            $('#displayStatisticsPanel').show();
+        }
+        else{
+            showDialog(_error_occured, '001');
+            $('#status').hide();
+        }
+    })
+    .fail(function () {
+        showDialog(_error_occured, '002');
+            $('#status').hide();
+    });
+}
+
+function initCharts() {
+
+    $.each(_data, function (index, item) {
+
+        $('#' + index).highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: item.title
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: item.piename,
+                data: item.data
+            }]
+        });
+    });
+}
+
+function addCountry(number, CountryCode, CountryName, pct) {
+    row = $('#row-tpl > section').clone();
+    row.find('.line-number').html(number);
+    
+    row.find('.country').html(country_image);
+    row.find('.nickname').html(CountryName);
+    
+
+    var outputData = '<tr>';
+    outputData += '<td>#' + number + '</td>';
+    var country_flag_url = _flags_dir + CountryCode + '.png';
+    var country_image = '<img title="' + CountryName + '" class="country-flag" src=' + country_flag_url + '>';
+    outputData += '<td style="padding:0">' + country_image + '</td>';
+    outputData += '<td>' + CountryName + '</td>';
+    var attendeeCount = '';
+    if (pct > 1)
+        attendeeCount = pct + ' attendees';
+    else
+        attendeeCount = '1 attendee';
+    outputData += '<td>'+attendeeCount+'</td>';
+    outputData += '</tr>';
+
+    $('#countries-list').append(outputData);
+}
+
+function addSpecies(number, name, pct) {    
+    var outputData = '<tr>';
+    outputData += '<td style="width: 40px;">' + pct + '</td>';
+    outputData += '<td>' + name + '</td>';
+    outputData += '</tr>';
+
+    $('#species-list').append(outputData);
+}
+
+function addSpeciesCategories(number, name, pct) {
+    var outputData = '<tr>';
+    outputData += '<td style="width: 40px;">' + pct + '</td>';
+    outputData += '<td>' + name + '</td>';
+    outputData += '</tr>';
+
+    $('#species-category-list').append(outputData);
+}

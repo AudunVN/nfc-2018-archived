@@ -1,0 +1,145 @@
+﻿//filters variables
+var _filter_country_id = '0';
+
+//sorting
+_order = {
+    direction: {
+        asc:     {
+            value: '0',
+            icon: '<i class="icon-down-open-big"></i>'
+        },
+        desc: {
+            value: '1',
+            icon: '<i class="icon-up-open-big"></i>'
+        },
+        default: {
+            value: '0',
+            icon: '<i class="icon-down-open-big"></i>'
+        },
+    },
+    by: {
+        fursuitname:    '0',
+        country:        '1',
+        default:        '0'
+    }
+};
+
+_orderby = _order.by.default;
+_orderby_direction = _order.direction.default.value;
+
+//totals var
+_attending_type_count = {};
+
+$(document).ready(function () {
+
+    if (!_show_statistics) {
+        $('#hideStatistics').show();
+        $('#displayStatistics').hide();
+        return;
+    }
+
+    $('#status').show();
+    
+    $('#CountryId').change(function () {
+        _filter_country_id = $('#CountryId').val();
+        fillFursuitData();
+    });
+
+    fillFursuitData();
+});
+
+//function sortData(a, b) {
+//    if (a.SortOrder < b.SortOrder)
+//        return 1;
+//    if (a.SortOrder > b.SortOrder)
+//        return -1;
+//    return 0;
+//}
+
+function fillFursuitData() {
+    
+    $('#status').show();
+
+    var queryObject = {
+        'CountryId': _filter_country_id,        
+        'OrderBy': _orderby,
+        'OrderByDirection': _orderby_direction
+    };
+
+    $.ajax({
+        dataType: "json",
+        url: _fursuit_data_url,
+        data: queryObject,
+        success: function (data) {
+            if (data.Status == 1) {                                                
+                $('#fursuitDataList').html('');
+                //data.Data.sort(sortData);
+                var lastHeadline = '';
+                var dataToPrint = [];
+                var i = -1;
+
+                $.each(data.Data.GetFursuits, function (index, e) {
+                    var headline = getHeadline(e);
+                    if (lastHeadline == headline) {
+                        // Push to existing data
+                        dataToPrint[i].Data.push(e);
+                    } else {
+                        i++;
+                        // Push to new data
+                        dataToPrint[i] = { Headline: headline, Data: [] };
+                        dataToPrint[i].Data.push(e);
+                        lastHeadline = headline;                        
+                    }
+                });
+
+                for (i = 0; i < dataToPrint.length; i++) {
+                    var o = dataToPrint[i];
+                    createTable(o.Headline, o.Data);
+                }
+
+                $('#listCount').text(data.Data.GetFursuits.length);
+                $('#status').hide();
+            }            
+        }
+    });
+}
+function getHeadline(data) {
+    if (_filter_country_id == '0') {
+        return data.FursuitNickName.charAt(0);
+    } else {
+        return data.CountryName;
+    }
+}
+
+function createTable(headline, data) {
+
+    var country_flag_url;
+    var newHeadline = document.createElement('h3');
+    $(newHeadline).text(headline).addClass('fursuitList__heading');
+
+    var outputData = '';
+
+    $.each(data, function () {
+        country_flag_url = _flags_dir + this.CountryCode + '.png';
+
+        outputData += '<div class="fursuitList__tile">';
+
+        if (this.ImagePath != null) {
+            outputData += '<div class="fursuitList__tile__image"><img class="fursuitList__tile__imageActual" src="' + this.ImagePath + '"></div>';
+        } else {
+            outputData += '<img class="fursuitList__tile__image" src="/static/images/default-av.png">';
+        }
+
+        var wearer = '';
+        if (this.FursuitWearer != null) {
+            wearer = '<br />Wearer: ' + this.FursuitWearer;
+        }
+        outputData += '<div class="fursuitList__tile__details">Fursuit: ' + this.FursuitNickName + '<br />Species: ' + this.FursuitSpecies + '</div>';
+        outputData += '<img  class="fursuitList__tile__flag" title="' + this.CountryName + '" src="' + country_flag_url + '">';
+
+        outputData += '</div>';
+    });
+
+    $('#fursuitDataList').append(newHeadline);
+    $('#fursuitDataList').append(outputData);
+}

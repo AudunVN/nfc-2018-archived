@@ -1,0 +1,82 @@
+﻿//showing a dialog
+function showDialog(title, content, isModal, close) {
+    if (title && content) {
+        $('#dialog-content').html(content);
+        //$('#dialog').dialog({ 'title': title, modal: isModal, draggable: false, width: 400 });
+        $('#dialog').dialog({
+            'title': title, modal: isModal, draggable: false, width: 400, buttons: {
+                "OK": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+        if (close)
+            $('#dialog').on('dialogclose', close);
+    }
+}
+/**
+ *  shows a confirm dialog with yes and cancel buttons, and executes a function with provided params
+ *  
+ *  @param title - the title of the popup
+ *  @param content the content of the popup (typically, the message it wil display)
+ *  @param isModal - self explanatory
+ *  @param dcallback (optional) - the function we're going to execute after clicking a button
+ *  @param dcallback_args - a json object with the keys being the name the button, and as the value, a json object with the argument names as the keys 
+ *                               This means the dialog_callback function must expect a json object for use as arguments. This is not mandatory.
+ */
+function showConfirmYesNo(title, content, isModal, dcallback, dcallback_args) {
+    if (title && content) {
+        $('#confirm-content').html(content);
+        $('#confirm').dialog({
+            'title': title,
+            modal: isModal,
+            draggable: false,
+            width: 500,
+            position: {
+                my: "center",
+                at: "center",
+                of: window
+            },            
+            buttons: {
+                Yes: function () {
+                    if (typeof dcallback == 'function') {
+                        if (dcallback_args && dcallback_args.Yes)
+                            dcallback(dcallback_args.Yes);
+                        else
+                            dcallback();
+                    }
+                    $(this).dialog("close");
+                },
+                Cancel: function () {
+                    if (typeof dcallback == 'function') {
+                        if (dcallback_args && dcallback_args.Cancel)
+                            dcallback(dcallback_args.Cancel);
+                        else
+                            dcallback();
+                    }
+                    $(this).dialog("close");
+                }
+            }
+        });
+    }
+}
+
+function displayErrorMsg(msg, code) {
+    error = 'Error message missing!';
+    if(msg){
+        error = msg;
+        if(code){
+            error = msg + ' Error code: ' + code;
+        }
+        else{
+            error = msg + ' - Error code missing';
+        }
+    }
+    if ($('#status').length > 0) {
+        $('#status').html(error);
+        $('#status').show();
+    }
+    else {
+        console.error(error);
+    }
+}
